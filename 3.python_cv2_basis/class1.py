@@ -9,7 +9,6 @@ def cv_show(name,img):
 
 img=cv.imread('0.picture\cat.jpg')
 
-
 img_shape=img.shape #读取图像的H W C 高度 宽度 彩色通道 BGR
 #print(img_shape)
 
