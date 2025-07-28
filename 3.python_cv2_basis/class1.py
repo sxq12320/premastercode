@@ -1,6 +1,7 @@
 import cv2 as cv
 import matplotlib as plt
-import numpy
+import numpy as np
+
 
 def cv_show(name,img):
     cv.imshow('name',img)
