@@ -5,7 +5,7 @@
 
 import time
 import numpy
-import matplotlib
+import matplotlib.pyplot as plt
 
 print (time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())))
 
