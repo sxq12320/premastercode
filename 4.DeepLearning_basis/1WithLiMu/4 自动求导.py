@@ -35,5 +35,5 @@ z = u * x
 z.sum().backward() #求导、反向传递
 GRAD_x = x.grad
 Test = x.grad == u #检验
-# print(GRAD_x)
-# print(Test)
+print(GRAD_x)
+print(Test)
