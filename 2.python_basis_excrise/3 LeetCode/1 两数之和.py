@@ -29,7 +29,3 @@ b = Solution.twosum_hashtab(Solution , nums , target)
 print(a)
 print(b)
 
-
-    
-
-    
