@@ -10,6 +10,7 @@ class ListNode:
 
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        ################ begin question answer
         if l1 is None :
             return l2
         if l2 is None:
@@ -19,12 +20,12 @@ class Solution:
         head = prehead #指针开始的地方
         carry = 0
 
-        while l1 and l2: #同时
-            retain = (l1.val + l2.val + carry)%10
-            carry = (l1.val + l2.val + carry )//10
+        while l1 and l2: #是否全在
+            retain = (l1.val + l2.val + carry)%10 #retain
+            carry = (l1.val + l2.val + carry )//10 #carry
             head.next = ListNode(retain)
-            l1 = l1.next
-            l2 = l2.next
+            l1 = l1.next #update
+            l2 = l2.next #update
             head = head.next
         
         while l1: # l1 too long
@@ -34,14 +35,14 @@ class Solution:
             l1 = l1.next
             head = head.next
         
-        while l2 :
+        while l2 : #l2 too long
             retain = (l2.val + carry)%10
             carry = (l2.val + carry)//10
             head.next = ListNode(retain)
             l2 = l2.next
             head = head.next
         
-        if carry == 1:
+        if carry == 1: #if the last have two byte
             head.next  = ListNode(carry)
 
         return prehead.next    
@@ -49,6 +50,7 @@ class Solution:
 
 
 
+# adding an example
 # l1 = [2,4,3], l2 = [5,6,4]
 l10 = ListNode(2)
 l11 = ListNode(4)
