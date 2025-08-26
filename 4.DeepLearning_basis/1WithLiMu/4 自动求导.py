@@ -1,7 +1,6 @@
 import torch
 import matplotlib.pyplot as plt
 import numpy as np
-import cv2 as cv
 import math
 
 x = torch.arange(4.0) #定义向量x
