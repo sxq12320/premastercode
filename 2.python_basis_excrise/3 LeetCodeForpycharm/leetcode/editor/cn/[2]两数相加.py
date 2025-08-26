@@ -51,39 +51,41 @@ from lib2to3.fixer_util import ListComp
 
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        prehead = ListNode(0)
-        head = prehead
+        head = ListNode(0)
+        pre_head = head
         carry = 0
+
         if l1 == None:
             return l2
-        if l2 == None:
+
+        if l2 ==None:
             return l1
 
         while l1 and l2:
-            retain = ( l1.val + l2.val + carry ) % 10
-            carry = (l1.val + l2.val + carry) // 10
+            retain = (l1.val + l2.val + carry )%10
+            carry = (l1.val + l2.val + carry)//10
             head.next = ListNode(retain)
             head = head.next
-            l2 = l2.next
             l1 = l1.next
+            l2 = l2.next
 
         while l1:
-            retain = (l1.val + carry) % 10
-            carry = (l1.val+ carry) // 10
+            retain = (l1.val+ carry) % 10
+            carry = (l1.val + carry) // 10
             head.next = ListNode(retain)
             head = head.next
             l1 = l1.next
 
         while l2:
-            retain = (l2.val + carry) % 10
+            retain = (l2.val+ carry) % 10
             carry = (l2.val + carry) // 10
             head.next = ListNode(retain)
             head = head.next
             l2 = l2.next
 
-        if (carry == 1):
+        if carry == 1:
             head.next = ListNode(1)
 
-        return prehead.next
+        return pre_head.next
 
 # leetcode submit region end(Prohibit modification and deletion)

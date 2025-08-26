@@ -1,0 +1,62 @@
+> 推荐先去写一下[「双指针」重织破碎之梦-15.三数之和](https://leetcode.cn/problems/3sum/solutions/3758973/shuang-zhi-zhen-zhong-zhi-po-sui-zhi-men-km4k/)
+
+## 题目分析
+
+我们需要从数组 `nums` 中选择三个整数，使它们的和最接近给定目标 `target`。
+关键点：
+
+1. 数组长度为 n，n >= 3。
+2. 返回的和只要求最接近 target，不要求具体哪三个数。
+3. 输入保证存在唯一解。
+
+## 思路
+
+1. **排序数组**：先将数组排序，这样方便使用双指针。
+2. **遍历每个元素作为起点**：用 `i` 遍历数组，将 `nums[i]` 作为三数和中的第一个数。
+3. **双指针查找**：在 `i` 后面的部分用左右指针 `l` 和 `r` 查找最接近 `target - nums[i]` 的两数和。
+   * 如果当前三数和大于 target，则右指针左移。
+   * 如果当前三数和小于 target，则左指针右移。
+   * 同时更新最接近的和。
+4. **返回结果**：遍历完所有组合后，返回记录的最接近和。
+
+## 代码
+
+* []
+
+```cpp
+class Solution {
+public:
+    int threeSumClosest(vector<int>& nums, int target) {
+        sort(nums.begin(), nums.end());
+        int n = nums.size();
+        int closest_sum = nums[0] + nums[1] + nums[2];
+        
+        for (int i = 0; i < n - 2; ++i) {
+            int l = i + 1, r = n - 1;
+            while (l < r) {
+                int curr_sum = nums[i] + nums[l] + nums[r];
+                if (abs(curr_sum - target) < abs(closest_sum - target)) {
+                    closest_sum = curr_sum;
+                }
+                if (curr_sum < target) {
+                    ++l;
+                } else if (curr_sum > target) {
+                    --r;
+                } else {
+                    return target; // 完全等于 target，直接返回
+                }
+            }
+        }
+        return closest_sum;
+    }
+};
+```
+
+## 复杂度分析
+
+* **时间复杂度**：O(n²)，排序 O(n log n) + 双指针遍历 O(n²)。
+* **空间复杂度**：O(1)，排序原地进行，不需要额外空间。
+
+## 学习路线
+
+更多算法学习内容以及算法竞赛题单请访问 [「 算法竞赛特训 」](https://leetcode.cn/discuss/post/IkRPp8/)
