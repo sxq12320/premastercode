@@ -42,6 +42,19 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
+        left = 0
+        cont = {}
+        ans = 0
 
+        for i in s:
+            cont[i] = 0
+
+        for right , value in enumerate(s):
+            cont[value] += 1
+            while cont[value] >1:
+                cont[s[left]]-=1
+                left = left+ 1
+            ans = max(ans , right - left + 1)
+        return ans
         
 # leetcode submit region end(Prohibit modification and deletion)

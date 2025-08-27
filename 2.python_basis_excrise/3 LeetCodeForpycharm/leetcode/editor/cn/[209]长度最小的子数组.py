@@ -51,27 +51,20 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-
         n = len(nums)
         left = 0
         ans = inf
         sum = 0
 
-        for right , val in enumerate(nums):
-            sum+=val
-            while sum - nums[left] >= target:
-                sum = sum - nums[left]
+        for right , value in enumerate(nums): #value = nums[right
+            sum += value
+
+            while sum >= target:
+                ans = min(ans , right- left +1)
+                sum -= nums[left]
                 left += 1
 
-            if sum >= target:
-                ans = min(ans , right-left+1)
-
-            # while sum>=target:
-            #     ans = min(ans ,  right - left + 1)
-            #     sum = sum -nums[left]
-            #     left += 1
-
-        if ans <=n:
+        if ans<= n:
             return ans
         else:
             return 0

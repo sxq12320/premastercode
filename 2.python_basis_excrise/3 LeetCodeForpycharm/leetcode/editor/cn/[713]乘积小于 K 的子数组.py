@@ -33,5 +33,18 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def numSubarrayProductLessThanK(self, nums: List[int], k: int) -> int:
-        
+        n = len(nums)
+        left = 0
+        sum = 1
+        ans = 0
+
+        if k <= 1:
+            return 0
+        for right,value in enumerate(nums):
+            sum = sum * value
+            while sum >= k :
+                sum = sum // nums[left]
+                left += 1
+            ans = ans + right - left + 1
+        return ans
 # leetcode submit region end(Prohibit modification and deletion)
