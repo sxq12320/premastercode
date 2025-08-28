@@ -59,5 +59,25 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def longestSemiRepetitiveSubstring(self, s: str) -> int:
+        n= len(s)
+        left = 0
+        ans = 1 # 长度最短是一位
+        same_times = 0
+
+        if s == None:
+            return 0
+
+        for right in range(1 , n , 1):# left 是0 那么right从后一位开始即可
+            if s[right-1] == s[right]:
+                same_times = same_times + 1
+            if same_times > 1:
+                left = left + 1
+                while s[left-1] != s[left]:
+                    left = left + 1
+                same_times -= 1
+            ans = max(ans , right - left + 1)
+        return ans
+
+
         
 # leetcode submit region end(Prohibit modification and deletion)
