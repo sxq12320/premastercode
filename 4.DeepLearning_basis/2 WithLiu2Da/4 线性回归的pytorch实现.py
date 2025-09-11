@@ -7,7 +7,7 @@ x_data = torch.tensor([[1.0] , [2.0] , [3.0]])
 y_data = torch.tensor([[2.0] , [4.0] , [6.0]])
 
 # 2 设计模型 线性模型 y=x*w+b loss 求和平方函数
-class LinearModel(torch.nn.Module):
+class LinearModel(torch.nn.Module): 
     def __init__(self):
         super(LinearModel , self).__init__()
         self.linear = torch.nn.Linear(1,1) # 定义线性模型 y = w*x + b
